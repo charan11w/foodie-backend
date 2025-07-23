@@ -4,13 +4,13 @@ const validator=require("validator")
 const{Schema, model}=mongoose;
 
 const userSchema = new Schema({
-  mobile: {
+  gmail: {
     type: String,
     required: true,
     unique: true,
     validate: {
-      validator: v => /^[6-9]\d{9}$/.test(v),
-      message: props => `${props.value} is not a valid Indian number!`,
+      validator: v => validator.isEmail(v),
+      message: props => `${props.value} is not a valid mail!`,
     }
   },
   otp: String,
